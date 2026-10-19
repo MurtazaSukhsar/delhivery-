@@ -1,0 +1,5 @@
+# Only the settings this app relies on. `supabase init` adds the rest if you run it.
+[functions.api]
+# The function checks the signed-in user itself (see _shared/core.ts → actorFrom),
+# and the public tracking page calls it without a user session.
+verify_jwt = false

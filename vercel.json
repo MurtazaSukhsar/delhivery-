@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/index?__p=/api/:path*" },
+    { "source": "/dev/:path*", "destination": "/api/index?__p=/dev/:path*" },
+    { "source": "/files/:path*", "destination": "/api/index?__p=/files/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "functions": { "api/index.js": { "maxDuration": 30 } }
+}

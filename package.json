@@ -1,0 +1,45 @@
+{
+  "name": "delivery-platform",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "tsx scripts/local-api.ts",
+    "demo": "concurrently -n api,web -c blue,green \"npm:dev:api\" \"vite --mode demo\"",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "tsx tests/api.test.ts",
+    "typecheck": "tsc -b",
+    "build:api": "esbuild scripts/vercel-api.ts --bundle --platform=node --format=esm --target=node20 --outfile=api/index.js",
+    "build:vercel": "npm run build:api && tsc -b && VITE_DEMO_API_URL=/api vite build --mode demo"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource/ibm-plex-sans-arabic": "^5.3.0",
+    "@supabase/supabase-js": "^2.117.3",
+    "@tanstack/react-query": "^5.104.1",
+    "date-fns": "^4.4.0",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.53.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4",
+    "write-excel-file": "^4.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/leaflet": "^1.9.22",
+    "@types/node": "^26.6.4",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.5",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.3"
+  }
+}
